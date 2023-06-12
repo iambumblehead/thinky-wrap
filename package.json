@@ -24,9 +24,7 @@
     "url": "https://github.com/neumino/thinky/issues"
   },
   "dependencies": {
-    "bluebird": "~2.10.2",
-    "rethinkdbdash": "~2.3.0",
-    "validator": "^13.7.0"
+    "validator": "^13.9.0"
   },
   "devDependencies": {
     "mocha": "^9.1.3"

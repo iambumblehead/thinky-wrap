@@ -1,3 +1,13 @@
+# thinky-wrap
+
+`thinky-wrap` is a reworked varion of the un-maintained [`thinky` package,](https://github.com/neumino/thinky/) in-compatible with newer version of node where thinky is prevented from holding database connections.
+
+`thinky-wrap` is not recommended for general use, but is meant to be used with legacy thinky-using projects; to migrate them to the latest versions of node and rethinkdb-ts.
+
+
+<details>
+<summary>original Thinky README</summary>
+
 # Thinky
 ===============================
 <a href="https://app.wercker.com/project/bykey/e5ab679f3412f8f86ef6488b31004fed"><img alt="Wercker status" src="https://app.wercker.com/status/e5ab679f3412f8f86ef6488b31004fed/m/master" align="right"></a>
@@ -144,3 +154,5 @@ The roadmap is defined with the issues/feedback on GitHub. Checkout:
 ### License
 
 MIT, see the [LICENSE](https://github.com/neumino/thinky/blob/master/LICENSE) file
+
+</details>
