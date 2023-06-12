@@ -1,6 +1,6 @@
 # thinky-wrap
 
-`thinky-wrap` is a reworked varion of the un-maintained [`thinky` package,](https://github.com/neumino/thinky/) in-compatible with newer version of node where thinky is prevented from holding database connections.
+`thinky-wrap` is a reworked varion of the un-maintained [`thinky` package,](https://github.com/neumino/thinky/) in-compatible with newer versions of node where thinky is prevented from holding database connections.
 
 `thinky-wrap` is not recommended for general use, but is meant to be used with legacy thinky-using projects; to migrate them to the latest versions of node and rethinkdb-ts.
 
