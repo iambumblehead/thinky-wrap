@@ -11,22 +11,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/neumino/thinky"
+    "url": "git://github.com/iambumblehead/thinky-wrap"
   },
   "keywords": [
     "rethinkdb",
     "orm"
   ],
+  "files": [
+    "lib"
+  ],
   "author": "Michel Tu <orphee@gmail.com> (http://justonepixel.com/)",
   "license": "MIT",
   "readmeFilename": "README.md",
   "bugs": {
-    "url": "https://github.com/neumino/thinky/issues"
-  },
-  "dependencies": {
-    "bluebird": "~2.10.2",
-    "rethinkdbdash": "~2.3.0",
-    "validator": "^13.7.0"
+    "url": "https://github.com/iambumblehead/thinky-wrap/issues"
   },
   "devDependencies": {
     "mocha": "^9.1.3"

@@ -1,3 +1,28 @@
+# thinky-wrap
+
+**`thinky-wrap` is a reworked version of the legacy [`thinky`](https://github.com/neumino/thinky/) package. Use `thinky-wrap` to port legacy thinky-using projects to recent versions of node, using rethinkdb-ts.** `thinky-wrap` uses host-native Promises and removes all thinky dependencies: "bluebird", "rethinkdbdash" and "validator".
+
+``` js
+import thinkywr from 'thinky-wrap'
+import { r } from 'rethinkdb-ts'
+
+// after connecting rethinkdb-ts, create a thinky instance
+const thinky = thinkywr({
+  host: env.RETHINK_HOST,
+  port: +env.RETHINK_PORT,
+  user: env.RETHINK_USER,
+  password: env.RETHINK_PASSWORD,
+  db: env.RETHINK_DB,
+  createDatabase: false,
+  silent: true
+}, r)
+```
+
+_note: Thinky-wrap has not been tested with cursors. Original thinky tests require a database connection and are not verified. Rethinkdb-ts should be connected outside of thinky-wrap and before calling thinky-wrap._
+
+<details>
+<summary>original Thinky README</summary>
+
 # Thinky
 ===============================
 <a href="https://app.wercker.com/project/bykey/e5ab679f3412f8f86ef6488b31004fed"><img alt="Wercker status" src="https://app.wercker.com/status/e5ab679f3412f8f86ef6488b31004fed/m/master" align="right"></a>
@@ -144,3 +169,5 @@ The roadmap is defined with the issues/feedback on GitHub. Checkout:
 ### License
 
 MIT, see the [LICENSE](https://github.com/neumino/thinky/blob/master/LICENSE) file
+
+</details>

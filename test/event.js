@@ -4,7 +4,6 @@ var r = thinky.r;
 
 var util = require(__dirname+'/util.js');
 var assert = require('assert');
-var Promise = require('bluebird');
 
 var modelNameSet = {};
 modelNameSet[util.s8()] = true;
@@ -17,7 +16,7 @@ var cleanTables = function(done) {
   for(var name in modelNameSet) {
     promises.push(r.table(name).delete().run());
   }
-  Promise.settle(promises).finally(function() {
+  Promise.allSettled(promises).finally(function() {
     // Add the links table
     for(var model in thinky.models) {
       modelNameSet[model] = true;
