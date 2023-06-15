@@ -16,10 +16,10 @@ config['enforce_type'] =  'strict';
 config['validate'] = 'oncreate';
 
 
-var thinky = require(__dirname+'/../lib/thinky.js')(config);
+var thinky = require(__dirname+'/../src/thinky.js')(config);
 var r = thinky.r;
 
-var libUtil = require(__dirname+'/../lib/util.js');
+var libUtil = require(__dirname+'/../src/util.js');
 var util = require(__dirname+'/util.js');
 var assert = require('assert');
 
