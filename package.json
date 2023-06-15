@@ -17,6 +17,9 @@
     "rethinkdb",
     "orm"
   ],
+  "files": [
+    "lib"
+  ],
   "author": "Michel Tu <orphee@gmail.com> (http://justonepixel.com/)",
   "license": "MIT",
   "readmeFilename": "README.md",
