@@ -18,6 +18,8 @@ const thinky = thinkywr({
 }, r)
 ```
 
+_note: Thinky-wrap has not been tested with cursors. Original thinky tests require a database connection and are not verified. Rethinkdb-ts should be connected outside of thinky-wrap and before calling thinky-wrap. use thinky-wrap to migrate from thinky toward rethinkdb-ts._
+
 <details>
 <summary>original Thinky README</summary>
 
