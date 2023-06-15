@@ -1,8 +1,8 @@
 var config = require(__dirname+'/../config.js');
-var thinky = require(__dirname+'/../lib/thinky.js')(config);
+var thinky = require(__dirname+'/../src/thinky.js')(config);
 var r = thinky.r;
-var Document = require(__dirname+'/../lib/document.js');
-var Errors = require(__dirname+'/../lib/errors.js');
+var Document = require(__dirname+'/../src/document.js');
+var Errors = require(__dirname+'/../src/errors.js');
 
 var util = require(__dirname+'/util.js');
 var assert = require('assert');

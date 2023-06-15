@@ -1,8 +1,8 @@
 {
-  "name": "thinky",
-  "version": "2.3.9",
+  "name": "thinky-wrap",
+  "version": "1.0.0",
   "description": "RethinkDB ORM for Node.js",
-  "main": "lib/thinky.js",
+  "main": "src/thinky.js",
   "directories": {
     "test": "test"
   },
@@ -15,10 +15,14 @@
   },
   "keywords": [
     "rethinkdb",
-    "orm"
+    "orm",
+    "thinky",
+    "wrap",
+    "wrapper",
+    "rethinkdb-ts"
   ],
   "files": [
-    "lib"
+    "src"
   ],
   "author": "Michel Tu <orphee@gmail.com> (http://justonepixel.com/)",
   "license": "MIT",
