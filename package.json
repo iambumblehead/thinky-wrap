@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/neumino/thinky"
+    "url": "git://github.com/iambumblehead/thinky-wrap"
   },
   "keywords": [
     "rethinkdb",
@@ -21,10 +21,7 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "bugs": {
-    "url": "https://github.com/neumino/thinky/issues"
-  },
-  "dependencies": {
-    "validator": "^13.9.0"
+    "url": "https://github.com/iambumblehead/thinky-wrap/issues"
   },
   "devDependencies": {
     "mocha": "^9.1.3"
