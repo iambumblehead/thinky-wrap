@@ -1,8 +1,6 @@
 # thinky-wrap
 
-`thinky-wrap` is a reworked varion of the un-maintained [`thinky` package.](https://github.com/neumino/thinky/) Use `thinky-wrap` to port legacy thinky-using projects to recent versions of node and rethinkdb-ts. Because it uses the rethinkdb-ts driver, `thinky-wrap` is compatible with the latest versions of node.
-
-`thinky-wrap` uses host-native Promises and removes all thinky dependencies: "bluebird", "rethinkdbdash" and "validator". Use `thinky-wrap` to port legacy thinky-using projects to recent versions of node and rethinkdb-ts.
+`thinky-wrap` is a reworked version of the legacy [`thinky`](https://github.com/neumino/thinky/) package. Use `thinky-wrap` to port legacy thinky-using projects to recent versions of node, using rethinkdb-ts. `thinky-wrap` uses host-native Promises and removes all thinky dependencies: "bluebird", "rethinkdbdash" and "validator". Use `thinky-wrap` to port legacy thinky-using projects to recent versions of node and rethinkdb-ts.
 
 
 <details>
