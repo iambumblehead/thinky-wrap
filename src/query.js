@@ -823,8 +823,10 @@ Query.prototype.removeRelation = function(field, joinedDocument) {
 
 exports.QueryInit = function(rethinkdb) {
   // var Term = require('rethinkdbdash')({pool: false}).expr(1).__proto__;
-  var Term = rethinkdb.expr(1).__proto__;
-  util.loopKeys(Term, function(Term, key) {
+  // var Term = rethinkdb.expr(1).__proto__;
+  var Term = rethinkdb
+  // util.loopKeys(Term, function(Term, key) {
+  Object.keys(Term).forEach(key => {
     if (key === 'run' || key[0] === '_') return;
     // Note: We suppose that no method has an empty name
     switch (key) {

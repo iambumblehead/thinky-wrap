@@ -3,7 +3,7 @@ var _util = require('util');
 var schemaUtil = require(__dirname+'/schema.js');
 var Document = require(__dirname+'/document.js');
 var EventEmitter = require('events').EventEmitter;
-var Query = require(__dirname+'/query.js');
+var Query = require(__dirname+'/query.js').Query;
 var Errors = require(__dirname+'/errors.js');
 
 /*
@@ -755,8 +755,10 @@ Model.prototype.hasAndBelongsToMany = function(joinedModel, fieldDoc, leftKey, r
 exports.ModelInit = function(rethinkdb) {
   // Import rethinkdbdash methods
   // var Term = require('rethinkdbdash')({pool: false}).expr(1).__proto__;
-  var Term = rethinkdb.expr(1).__proto__;
-  util.loopKeys(Term, function(Term, key) {
+  // var Term = rethinkdb.expr(1).__proto__;
+  var Term = rethinkdb
+  // util.loopKeys(Term, function(Term, key) {
+  Object.keys(Term).forEach(key => {
     if (!Term.hasOwnProperty(key)) return;
     if (key === 'run' || key[0] === '_') return;
 
