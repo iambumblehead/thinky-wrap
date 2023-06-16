@@ -1,5 +1,7 @@
 # changelog
 
+ * 1.0.1 _Jun.16.2023_
+   * loop rethinkdb-ts query keys rather than rethinkdbdash.expr(1).__proto__
  * 1.0.0 _Jun.15.2023_
    * rename thinky to think-wrap
    * mv lib src
