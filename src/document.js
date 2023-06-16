@@ -561,7 +561,8 @@ Document.prototype._save = function(docToSave, saveAll, savedModel, callback) {
     async: true,
     fn: self._saveHook,
     fnArgs: [docToSave, saveAll, savedModel]
-  }).nodeify(callback);
+  }).then(callback);
+  //}).nodeify(callback);
 }
 
 
@@ -1592,7 +1593,8 @@ Document.prototype._deleteHook = function(docToDelete, deleteAll, deletedDocs, d
       reject(error)
     });
   })
-  return p.nodeify(callback);
+  // return p.nodeify(callback);
+  return p.then(callback);
 }
 
 /*
@@ -1702,7 +1704,8 @@ Document.prototype.purge = function(callback) {
     Promise.all(promises).then(function() {
       resolve(self);
     }).catch(reject);
-  }).nodeify(callback);
+    // }).nodeify(callback);
+  }).then(callback);
 }
 
 Document.prototype.addRelation = function() {
