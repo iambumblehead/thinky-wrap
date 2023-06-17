@@ -3,8 +3,8 @@
 **`thinky-wrap` is a reworked version of the legacy [`thinky`](https://github.com/neumino/thinky/) package. Use `thinky-wrap` to port legacy thinky-using projects to recent versions of node, using rethinkdb-ts.** `thinky-wrap` uses host-native Promises and no dependencies.
 
 ``` js
-import thinkywr from 'thinky-wrap'
-import rethinkdb 'rethinkdb-ts'
+import thinky from 'thinky-wrap'
+import rethinkdbts from 'rethinkdb-ts'
 
 export const init = async () => {
   // connect rethinkdb-ts first
@@ -17,9 +17,7 @@ export const init = async () => {
   })
 
   // create thinky instance around connected rethinkdb-ts
-  return thinky({
-    db: env.RETHINK_DB
-  }, rethinkdbts.r)
+  return thinky({ db: env.RETHINK_DB }, rethinkdbts.r)
 }
 ```
 
