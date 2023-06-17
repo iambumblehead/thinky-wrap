@@ -78,7 +78,8 @@ Query.prototype.run = function(options, callback) {
     callback = options;
     options = {};
   }
-  return this._execute(options, true).nodeify(callback);
+  // return this._execute(options, true).nodeify(callback);
+  return this._execute(options, true).then(callback);
 }
 
 
@@ -94,7 +95,8 @@ Query.prototype.execute = function(options, callback) {
     callback = options;
     options = {};
   }
-  return this._execute(options, false).nodeify(callback);
+  // return this._execute(options, false).nodeify(callback);
+  return this._execute(options, false).then(callback);
 }
 
 /**
@@ -133,13 +135,14 @@ Query.prototype.bindExecute = function () {
 Query.prototype._execute = function(options, parse) {
   var self = this;
   options = options || {};
-  var fullOptions = {groupFormat: 'raw'}
-  util.loopKeys(options, function(options, key) {
-    fullOptions[key] = options[key]
-  });
-  if (parse === true) {
-    fullOptions.cursor = false;
-  }
+  // var fullOptions = {groupFormat: 'raw'}
+  // util.loopKeys(options, function(options, key) {
+  //   fullOptions[key] = options[key]
+  // });
+  // if (parse === true) {
+  //   fullOptions.cursor = false;
+  // }
+  var fullOptions = {}
 
   if (self._model._error !== null) {
     return Promise.reject(self._model._error);
