@@ -78,8 +78,13 @@ Thinky.prototype.dbReady = function() {
 
   return new Promise((resolve, reject) => {
     (async function checkIsReady (tries) {
-      if (this.dbConnected)
-        return resolve(true)
+      try {
+        // test query will succeed if db connected
+        if (await self.r.expr(1).add(1).eq(2).run()) {
+          return resolve(true)
+        }
+      } catch (e) {}
+
       if (tries <= 0)
         return reject('dbConnected, failed')
 

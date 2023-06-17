@@ -1,24 +1,29 @@
 # thinky-wrap
 
-**`thinky-wrap` is a reworked version of the legacy [`thinky`](https://github.com/neumino/thinky/) package. Use `thinky-wrap` to port legacy thinky-using projects to recent versions of node, using rethinkdb-ts.** `thinky-wrap` uses host-native Promises and removes all thinky dependencies: "bluebird", "rethinkdbdash" and "validator".
+**`thinky-wrap` is a reworked version of the legacy [`thinky`](https://github.com/neumino/thinky/) package. Use `thinky-wrap` to port legacy thinky-using projects to recent versions of node, using rethinkdb-ts.** `thinky-wrap` uses host-native Promises and no dependencies.
 
 ``` js
 import thinkywr from 'thinky-wrap'
-import { r } from 'rethinkdb-ts'
+import rethinkdb 'rethinkdb-ts'
 
-// after connecting rethinkdb-ts, create a thinky instance
-const thinky = thinkywr({
-  host: env.RETHINK_HOST,
-  port: +env.RETHINK_PORT,
-  user: env.RETHINK_USER,
-  password: env.RETHINK_PASSWORD,
-  db: env.RETHINK_DB,
-  createDatabase: false,
-  silent: true
-}, r)
+export const init = async () => {
+  // connect rethinkdb-ts first
+  await rethinkdbts.r.connectPool({
+    host: env.RETHINK_HOST,
+    port: +env.RETHINK_PORT,
+    user: env.RETHINK_USER,
+    password: env.RETHINK_PASSWORD,
+    db: env.RETHINK_DB
+  })
+
+  // create thinky instance around connected rethinkdb-ts
+  return thinky({
+    db: env.RETHINK_DB
+  }, rethinkdbts.r)
+}
 ```
 
-_note: Thinky-wrap has not been tested with cursors. Original thinky tests require a database connection and are not verified. Rethinkdb-ts should be connected outside of thinky-wrap and before calling thinky-wrap._
+_note: Thinky-wrap is not tested with cursors. Original thinky tests require a database connection and are not verified. Rethinkdb-ts should be connected outside of thinky-wrap and before calling thinky-wrap._
 
 <details>
 <summary>original Thinky README</summary>
