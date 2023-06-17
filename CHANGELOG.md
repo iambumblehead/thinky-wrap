@@ -1,5 +1,7 @@
 # changelog
 
+ * 1.0.3 _Jun.16.2023_
+   * fix README errors
  * 1.0.2 _Jun.16.2023_
    * resolve checkIsReady Promise
    * update README example
