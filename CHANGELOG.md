@@ -1,5 +1,7 @@
 # changelog
 
+ * 1.0.4 _Jul.19.2023_
+   * use rethinkdb-ts interface at linkPromise
  * 1.0.3 _Jun.16.2023_
    * fix README errors
  * 1.0.2 _Jun.16.2023_
