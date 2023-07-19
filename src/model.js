@@ -642,7 +642,24 @@ Model.prototype.hasAndBelongsToMany = function(joinedModel, fieldDoc, leftKey, r
 
     }
 
-    var linkPromise = linkModel.ready().then(function() {
+    var linkPromise = linkModel.ready().then(async () => {
+      try {
+        await query.run()
+      } catch (error) {
+        if (/^Index `/.test(error.message)) {
+          return;
+        }
+        if (/^Table `.*` already exists/.test(error.message)) {
+          return;
+        }
+        self._getModel()._setError(error);
+        joinedModel._getModel()._setError(error);
+        throw error;
+      }
+
+      self._getModel()._indexes[leftKey] = true;
+      joinedModel._getModel()._indexes[rightKey] = true;      
+      /*
       return query.run()
       .then(function() {
         self._getModel()._indexes[leftKey] = true;
@@ -659,6 +676,7 @@ Model.prototype.hasAndBelongsToMany = function(joinedModel, fieldDoc, leftKey, r
         joinedModel._getModel()._setError(error);
         throw error;
       });
+      */
     })
     .then(function() {
       self._createIndex(leftKey)

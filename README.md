@@ -1,6 +1,6 @@
 # thinky-wrap
 
-**`thinky-wrap` is a reworked version of the legacy [`thinky`](https://github.com/neumino/thinky/) package. Use `thinky-wrap` to port legacy thinky-using projects to recent versions of node, using rethinkdb-ts.** `thinky-wrap` uses host-native Promises and no dependencies.
+**`thinky-wrap` is a reworked version of the legacy [`thinky`](https://github.com/neumino/thinky/) package. Use `thinky-wrap` to port legacy thinky-using projects to recent versions of node, using rethinkdb-ts.** `thinky-wrap` uses no dependencies.
 
 ``` js
 import thinky from 'thinky-wrap'
