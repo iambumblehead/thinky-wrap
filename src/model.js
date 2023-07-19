@@ -351,7 +351,31 @@ Model.prototype._createIndex = function(name, fn, opts) {
   opts = opts === undefined ? {} : opts
   
   var promise = this.tableReady().then(function() {
-    return new Promise(function(resolve, reject) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        await r.branch(
+          r.table(tableName).indexList().contains(name),
+          r.table(tableName).indexWait(name),
+          r.branch(
+            r.table(tableName).info()('primary_key').eq(name),
+            r.table(tableName).indexWait(name),
+            r.table(tableName).indexCreate(name, fn, opts).do(function() {
+              return r.table(tableName).indexWait(name);
+            })
+          )
+        ).run()
+      } catch (error) {
+        if (/^Index/.test(error.message)) {
+          // TODO: This regex seems a bit too generous since messages such
+          // as "Index `id` was not found on table..." will be accepted.
+          // Figure out if this is OK or not.
+          return resolve();
+        }
+        return reject(error);
+      }
+
+      resolve()
+      /*
       return r.branch(
         r.table(tableName).indexList().contains(name),
         r.table(tableName).indexWait(name),
@@ -374,6 +398,7 @@ Model.prototype._createIndex = function(name, fn, opts) {
         }
         reject(error);
       });
+      */
     });
   })
   .then(function() {
