@@ -152,12 +152,57 @@ Query.prototype._execute = function(options, parse) {
   });
 }
 
-Query.prototype._executeCallback = function(fullOptions, parse, groupFormat) {
+Query.prototype._executeCallback = async function(fullOptions, parse, groupFormat) {
   var self = this;
   if (self._error !== undefined) {
     return Promise.reject(new Error("The partial value is not valid, so the write was not executed. The original error was:\n"+self._error.message));
   }
 
+  try {
+    const result = await self._query.run(fullOptions)
+    if (result === null && parse) {
+      throw new Errors.DocumentNotFound();
+    }
+
+    // Expect a write result from RethinkDB
+    if (self._postValidation === true) {
+      return self._validateQueryResult(result);
+    }
+
+    if (result != null && typeof result.getType === 'function') {
+      var resultType = result.getType();
+      if (resultType === 'Feed' ||
+        resultType === 'OrderByLimitFeed' ||
+        resultType === 'UnionedFeed'
+      ) {
+        var feed = new Feed(result, self._model);
+        return feed;
+      }
+
+      if (resultType === 'AtomFeed') {
+        return result.next().then(function(initial) {
+          var value = initial.new_val || {};
+          return self._model._parse(value).then(function(doc) {
+            doc._setFeed(result);
+            return doc;
+          });
+        });
+      }
+    }
+
+    if (parse === true) {
+      return self._model._parse(result, self._ungroup);
+    }
+
+    if (groupFormat !== 'raw') {
+      return Query.prototype._convertGroupedData(result);
+    }
+
+    return result;
+  } catch (err) {
+    Promise.reject(Errors.create(err));
+  }
+  /*
   return self._query.run(fullOptions).then(function(result) {
     if (result === null && parse) {
       throw new Errors.DocumentNotFound();
@@ -201,7 +246,8 @@ Query.prototype._executeCallback = function(fullOptions, parse, groupFormat) {
   }).catch(function(err) {
     return Promise.reject(Errors.create(err));
   })
-};
+  */
+}
 
 Query.prototype._validateUngroupResult = function(result) {
 }
